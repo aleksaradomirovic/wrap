@@ -1,0 +1,6 @@
+*.o
+*.d
+/wrap
+
+/deb
+/wrap.deb
