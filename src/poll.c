@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <poll.h>
+#include <readline/readline.h>
 #include <unistd.h>
 
 int inpipe[2], outpipe[2];
@@ -98,7 +99,9 @@ int io_loop() {
         }
 
         if(polls[0].revents & POLLIN) {
+            rl_reset_line_state();
             status = copy_output();
+            rl_redisplay();
             if(status) {
                 return status;
             }

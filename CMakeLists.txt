@@ -24,3 +24,5 @@ target_link_libraries(
         ${LIBREADLINE}
         ${LIBHISTORY}
 )
+
+install(TARGETS wrap)
