@@ -70,7 +70,7 @@ static void make_nonblocking(int fd) {
 }
 
 static void readline_cb(char *line) {
-    add_history_time(line);
+    add_history(line);
     size_t len = strlen(line);
     line[len++] = '\n';
     write_full(master_write, line, len);
