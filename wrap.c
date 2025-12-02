@@ -92,6 +92,8 @@ static void copy_output(int pollmaster) {
             total += wlen;
         }
     }
+
+    rl_forced_update_display();
 }
 
 static void line_handler_cb(char *line) {

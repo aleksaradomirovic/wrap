@@ -31,6 +31,7 @@ static int args_parser(int key, char *arg, struct argp_state *__restrict__ state
 
 static const struct argp args_info = {
     .parser = args_parser,
+    .args_doc = "PROGRAM [ARGS...]"
 };
 
 int main(int argc, char **argv) {
