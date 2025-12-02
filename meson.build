@@ -12,5 +12,6 @@ readline = dependency('readline', required: true)
 wrap = executable(
     'wrap',
     'main.c', 'wrap.c', 'wrap.h',
-    dependencies: readline
+    dependencies: readline,
+    install: true
     )
