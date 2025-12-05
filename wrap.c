@@ -13,6 +13,7 @@
 #include <sys/wait.h>
 
 #include <readline/readline.h>
+#include <readline/history.h>
 
 pid_t program_pid = -1;
 int master_fd;
@@ -97,6 +98,7 @@ static void copy_output(int pollmaster) {
 }
 
 static void line_handler_cb(char *line) {
+    add_history(line);
     size_t len = strlen(line);
     line[len++] = '\n';
     for(size_t total = 0; total < len;) {
@@ -115,6 +117,8 @@ static void line_handler_cb(char *line) {
 }
 
 void io_loop() {
+    using_history();
+
     int pollstdin = dupnb(STDIN_FILENO), pollmaster = dupnb(master_fd);
     rl_callback_handler_install("", line_handler_cb);
 
